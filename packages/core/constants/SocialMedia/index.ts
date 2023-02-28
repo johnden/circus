@@ -1,7 +1,7 @@
 // Please do not write '/' at last
 // 마지막에 '/'를 빼주세요!
 
-export const githubUrl = 'https://github.com/hyesungoh';
+export const githubUrl = 'https://github.com/johnden';
 
 export const instagramUrl = 'https://www.instagram.com/hyes5_';
 
