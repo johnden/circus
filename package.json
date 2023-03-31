@@ -51,5 +51,8 @@
     "ts-jest": "^28.0.4",
     "turbo": "^1.8.3",
     "typescript": "^4.7.3"
+  },
+  "dependencies": {
+    "playwright": "^1.32.1"
   }
 }
