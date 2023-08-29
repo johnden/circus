@@ -1,4 +1,3 @@
-# this is content of .github/workflows/github-pages-deploy.yml
 name: github pages deploy
 
 on:
@@ -8,7 +7,7 @@ on:
     branches: main
 
 env:
-    TYPE_OF_APP: blog #or resume
+  TYPE_OF_APP: blog
 
 jobs:
   build:
