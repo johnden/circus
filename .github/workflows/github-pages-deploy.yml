@@ -33,7 +33,7 @@ jobs:
       - name: Export app
         run: npm run export:${{ env.TYPE_OF_APP }}
         env:
-          NEXT_PUBLIC_BASE_PATH: /your-repo-name
+          NEXT_PUBLIC_BASE_PATH: /circus
 
       - name: Add .nojekyll file
         run: touch apps/${{ env.TYPE_OF_APP }}/out/.nojekyll
