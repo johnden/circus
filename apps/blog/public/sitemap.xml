@@ -1,17 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://comet-land-blog.vercel.app</loc>
+    <loc>https://circus-blog.vercel.app</loc>
   </url>
 
   <url>
-    <loc>https://comet-land-blog.vercel.app/Aleo</loc>
+    <loc>https://circus-blog.vercel.app/Anxiety</loc>
   </url>
   <url>
-    <loc>https://comet-land-blog.vercel.app/Start</loc>
+    <loc>https://circus-blog.vercel.app/Zone</loc>
+  </url>
+  <url>
+    <loc>https://circus-blog.vercel.app/Exercise</loc>
+  </url>
+  <url>
+    <loc>https://circus-blog.vercel.app/Start</loc>
+  </url>
+  <url>
+    <loc>https://circus-blog.vercel.app/Trait</loc>
+  </url>
+  <url>
+    <loc>https://circus-blog.vercel.app/Area52</loc>
+  </url>
+  <url>
+    <loc>https://circus-blog.vercel.app/Sei copy</loc>
+  </url>
+  <url>
+    <loc>https://circus-blog.vercel.app/Sei</loc>
+  </url>
+  <url>
+    <loc>https://circus-blog.vercel.app/Aleo</loc>
+  </url>
+  <url>
+    <loc>https://circus-blog.vercel.app/Start</loc>
   </url>
 
   <url>
-    <loc>https://comet-land-blog.vercel.app/category/Zero—Knowledge Proof</loc>
+    <loc>https://circus-blog.vercel.app/category/Life</loc>
+  </url>
+  <url>
+    <loc>https://circus-blog.vercel.app/category/Rust</loc>
+  </url>
+  <url>
+    <loc>https://circus-blog.vercel.app/category/Work</loc>
+  </url>
+  <url>
+    <loc>https://circus-blog.vercel.app/category/Zero—Knowledge Proof</loc>
   </url>
 </urlset>

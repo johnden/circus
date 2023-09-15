@@ -5,9 +5,10 @@ date: 2023-09-01 17:34:00
 category: 'Rust'
 ---
 
-现在开始在工作的闲暇时间中（摸鱼中）学习一下Rust，Rust在服务端的性能仅次于C++，而在Golang, C#, Java, Python, Node之上（ChatGPT说的，要杠找它），而在区块链领域里面也会用到，譬如Solana，还有StarkNet（其编写智能合约的Cairo也是跟Rust相似，后面也会学习）
+现在开始在工作的闲暇时间中（摸鱼中）学习一下 Rust，Rust 在服务端的性能仅次于 C++，而在 Golang, C#, Java, Python, Node 之上（ChatGPT 说的，要杠找它），而在区块链领域里面也会用到，譬如 Solana，还有 StarkNet（其编写智能合约的 Cairo 也是跟 Rust 相似，后面也会学习）
 
 ## Move
+
 ```rust
 fn main() {
     let s1 = String::from("hello");
@@ -18,6 +19,7 @@ fn main() {
 如果你在其他语言中听说过术语 浅拷贝（shallow copy）和 深拷贝（deep copy），那么拷贝指针、长度和容量而不拷贝数据可能听起来像浅拷贝。不过因为 Rust 同时使第一个变量无效了，这个操作被称为 移动（move），而不是叫做浅拷贝。上面的例子可以解读为 s1 被 移动 到了 s2 中。
 
 ## Clone
+
 ```rust
 fn main() {
     let s1 = String::from("hello");

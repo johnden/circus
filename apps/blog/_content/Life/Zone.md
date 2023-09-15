@@ -11,7 +11,7 @@ category: 'Life'
 
 然后腹部开始有些剑突痛，以为是肝出了问题，去医院检查。
 
-医生告诉我肝的位置不在那里哈哈，我自己估计可能是没吃早餐胆的问题吧，顺带照了个B超说我有脂肪肝。。。
+医生告诉我肝的位置不在那里哈哈，我自己估计可能是没吃早餐胆的问题吧，顺带照了个 B 超说我有脂肪肝。。。
 
 开始要运动起来了，重新健身激活肌肉。
 
@@ -23,11 +23,11 @@ category: 'Life'
 
 每天我都冒出来很多的想法，但是付诸行动的少之又少。
 
-这半年来有学习有关零知识证明的circuit，Aleo。
+这半年来有学习有关零知识证明的 circuit，Aleo。
 
-Node服务端的Express、Nestjs。
+Node 服务端的 Express、Nestjs。
 
-DB端的MongoDB、PostgesDB、GraphQL。
+DB 端的 MongoDB、PostgesDB、GraphQL。
 
 还有画画技巧都没有好好地记录。
 

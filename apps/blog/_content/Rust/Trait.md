@@ -5,7 +5,7 @@ date: 2023-09-14 15:34:00
 category: 'Rust'
 ---
 
-Rust的Trait是一个很独特的特性，记录一下各个常用Trait的使用方法。
+Rust 的 Trait 是一个很独特的特性，记录一下各个常用 Trait 的使用方法。
 
 ## Display:
 

@@ -7,17 +7,347 @@
   >
     <channel>
         <title><![CDATA[Circus]]></title>
-        <link>https://comet-land-blog.vercel.app</link>
+        <link>https://circus-blog.vercel.app</link>
         <description>
           <![CDATA[Keep the curiosity and thirst for knowledge。]]>
         </description>
         <language>en</language>
-        <lastBuildDate>2023-03-30</lastBuildDate>
+        <lastBuildDate>2023-09-15</lastBuildDate>
         <item>
+    <title><![CDATA[在Area52中学习Rust和CosmWasm]]></title>
+    <link>https://circus-blog.vercel.app/Area52</link>
+    <pubDate>2023-09-15</pubDate>
+    <guid isPermaLink="false">https://circus-blog.vercel.app/Area52</guid>
+    <description>
+    <![CDATA[太喜欢这种一边编程一边做游戏的教程]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<p>昨天发现了 <a href="https://area-52.io/" target="_blank" rel="noopener noreferer">https://area-52.io/</a> 这个网站一边编程一边做游戏，</p>
+<p>用于学习Rust和CosmWasm。</p>
+<p>我想起以前我也是通过Loom的CryptoZombie来学习Solidity智能合约。</p>
+<p>现在记录一下课程主要内容，主要生啃英语可能记忆不太深。</p>
+<h2 id="第一课" class="heading">第一课</h2>
+<p>CosmWasm 遵循 Actor 模型，涉及通过消息进行的角色（智能合约）交互。</p>
+<p>CosmWasm 的入口点是定义合同如何响应特定类型消息的特殊函数。</p>
+<p>instantiate 入口点在智能合约首次部署到区块链时进行初始化。</p>
+<p>我们学习了如何构建和使用 instantiate 函数的消息结构（InstantiateMsg）。</p>
+<p>在 CosmWasm 合约中，状态存储在区块链上，可以通过入口点进行修改。</p>
+<p>我们讨论了使用 serde 库进行数据结构的序列化和反序列化的概念。</p>
+<p>来自 CosmWasm 库的关键概念，包括 entry_point 特征、Response 消息类型、使用 add_attributes 返回键值对的方法，以及各种类型的使用，如 DepsMut、Env、MessageInfo 和 Addr。</p>
+<p>我们探讨了 Storage 结构及其相关函数，包括用于与合同存储交互的 Singleton 和 ReadonlySingleton。</p>
+<h2 id="第二课" class="heading">第二课</h2>
+<p>执行（execute）用于对合约进行更改，这将产生费用。</p>
+<p>查询（query）是只读的，不会产生费用。</p>
+<p>由于是只读的，查询接受一个 Deps 参数，而不是 DepsMut 参数。</p>
+<p>MessageInfo 可以用于检查发送方是否具有对特定合约功能的有效访问权限，方法是将 info.sender 与预先确定的管理员地址进行比较。</p>
+<p>我们还接触了 cosmwasm 库中的一些概念，包括：</p>
+<p>StdResult 结构体，它是 Result 的包装器。</p>
+<p>用于查询的返回类型 Binary，以及将任意类型转换为 Binary 的 to_binary 函数。</p>
+<p>Deps，它是 DepsMut 的只读版本。</p>]]>
+    </content:encoded>
+  </item><item>
+    <title><![CDATA[Rust之Trait]]></title>
+    <link>https://circus-blog.vercel.app/Trait</link>
+    <pubDate>2023-09-14</pubDate>
+    <guid isPermaLink="false">https://circus-blog.vercel.app/Trait</guid>
+    <description>
+    <![CDATA[各种常用Trait的使用方法]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<p>Rust的Trait是一个很独特的特性，记录一下各个常用Trait的使用方法。</p>
+<h2 id="display" class="heading">Display:</h2>
+<p>Display 是 Rust 中的一个重要 trait，它用于自定义类型的文本格式化输出，通常用于 println! 和其他打印宏。这个 trait 要求实现一个名为 fmt 的方法，它接受一个格式化器（formatter）作为参数，用于将类型转换为字符串。</p>
+<h2 id="clone-和-copy" class="heading">Clone 和 Copy：</h2>
+<p>Clone trait 允许创建类型的深拷贝。
+Copy trait 用于表示可以进行比特级的复制，通常用于固定大小的类型（比如整数、字符等）。</p>
+<h2 id="debug" class="heading">Debug：</h2>
+<p>Debug trait 用于以调试格式打印类型，通常用于调试目的。</p>
+<h2 id="iterator" class="heading">Iterator：</h2>
+<p>Iterator trait 允许你对集合类型（如数组、向量、迭代器等）进行迭代操作，如 map、filter、fold 等。</p>
+<h2 id="default" class="heading">Default：</h2>
+<p>Default trait 允许为类型提供默认值。</p>
+<h2 id="partialeq-和-eq" class="heading">PartialEq 和 Eq：</h2>
+<p>PartialEq trait 允许比较两个值是否相等。
+Eq trait 表示类型具有相等性，但通常需要实现 PartialEq。</p>
+<h2 id="partialord-和-ord" class="heading">PartialOrd 和 Ord：</h2>
+<p>PartialOrd trait 允许比较两个值的大小关系。
+Ord trait 表示类型可以完全排序，但通常需要实现 PartialOrd。</p>
+<h2 id="asref-和-asmut" class="heading">AsRef 和 AsMut：</h2>
+<p>AsRef 和 AsMut trait 用于将一个类型转换为另一个类型的引用或可变引用。</p>
+<h2 id="from-和-into" class="heading">From 和 Into：</h2>
+<p>From trait 允许从一个类型转换为另一个类型。
+Into trait 与 From 相反，它允许将一个类型转换为另一个类型。</p>
+<h2 id="fnfnmut-和-fnonce" class="heading">Fn、FnMut 和 FnOnce：</h2>
+<p>这些 trait 用于表示可调用的对象，分别表示可借用、可变借用和所有权转移的闭包。</p>
+<h2 id="deref-和-derefmut" class="heading">Deref 和 DerefMut：</h2>
+<p>Deref 和 DerefMut trait 用于自定义类型的解引用行为。</p>
+<h2 id="serialize-和-deserialize" class="heading">Serialize 和 Deserialize：</h2>
+<p>用于序列化和反序列化数据，通常用于处理 JSON、XML 等格式。</p>
+<h2 id="send-和-sync" class="heading">Send 和 Sync：</h2>
+<p>Send trait 表示类型可以在多个线程之间安全传递。
+Sync trait 表示类型可以在多个线程之间安全共享。</p>]]>
+    </content:encoded>
+  </item><item>
+    <title><![CDATA[Rust练习（1）]]></title>
+    <link>https://circus-blog.vercel.app/Exercise</link>
+    <pubDate>2023-09-12</pubDate>
+    <guid isPermaLink="false">https://circus-blog.vercel.app/Exercise</guid>
+    <description>
+    <![CDATA[记录一下练习Rust]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<h2 id="primitivedatetime-duration" class="heading">PrimitiveDateTime, Duration</h2>
+<p>输入一个日期，然后返回十亿秒后的那个时间。</p>
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">use</span> <span class="token namespace">time<span class="token punctuation">::</span></span><span class="token punctuation">{</span><span class="token class-name">PrimitiveDateTime</span> <span class="token keyword">as</span> <span class="token class-name">DateTime</span><span class="token punctuation">,</span> <span class="token class-name">Duration</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment">// Returns a DateTime one billion seconds after start.</span>
+</span><span class="code-line"><span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function-definition function">after</span><span class="token punctuation">(</span>start<span class="token punctuation">:</span> <span class="token class-name">DateTime</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">DateTime</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">let</span> future <span class="token operator">=</span> start <span class="token operator">+</span> <span class="token class-name">Duration</span><span class="token punctuation">::</span><span class="token function">seconds</span><span class="token punctuation">(</span><span class="token number">1_000_000_000</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 十亿秒</span>
+</span><span class="code-line">    future
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<h2 id="reverse" class="heading">Reverse</h2>
+<p>输入一个字符串，输出反向的字符串。</p>
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function-definition function">reverse</span><span class="token punctuation">(</span>input<span class="token punctuation">:</span> <span class="token operator">&#x26;</span><span class="token keyword">str</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">String</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token comment">// 将输入字符串转换为字符切片，反转它，然后将其连接成字符串</span>
+</span><span class="code-line">    input<span class="token punctuation">.</span><span class="token function">chars</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">rev</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">::</span><span class="token operator">&#x3C;</span><span class="token class-name">String</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span></code></pre>
+<h2 id="clock-string" class="heading">Clock String</h2>
+<p>输入hour和minute，输出一个显示时间的字符串</p>
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">use</span> <span class="token namespace">std<span class="token punctuation">::</span></span>fmt<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token keyword">use</span> <span class="token namespace">std<span class="token punctuation">::</span>ops<span class="token punctuation">::</span></span><span class="token class-name">Add</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token attribute attr-name">#[derive(Debug, PartialEq, Eq)]</span> <span class="token comment">// 添加 Eq trait</span>
+</span><span class="code-line"><span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token type-definition class-name">Clock</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    hours<span class="token punctuation">:</span> <span class="token keyword">i32</span><span class="token punctuation">,</span>
+</span><span class="code-line">    minutes<span class="token punctuation">:</span> <span class="token keyword">i32</span><span class="token punctuation">,</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">impl</span> <span class="token class-name">Clock</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function-definition function">new</span><span class="token punctuation">(</span>hours<span class="token punctuation">:</span> <span class="token keyword">i32</span><span class="token punctuation">,</span> minutes<span class="token punctuation">:</span> <span class="token keyword">i32</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token keyword">Self</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token keyword">let</span> total_minutes <span class="token operator">=</span> hours <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">+</span> minutes<span class="token punctuation">;</span>
+</span><span class="code-line">        <span class="token keyword">let</span> normalized_minutes <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>total_minutes <span class="token operator">%</span> <span class="token number">1440</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1440</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">1440</span><span class="token punctuation">;</span> <span class="token comment">// Ensure non-negative</span>
+</span><span class="code-line">
+</span><span class="code-line">        <span class="token class-name">Clock</span> <span class="token punctuation">{</span>
+</span><span class="code-line">            hours<span class="token punctuation">:</span> normalized_minutes <span class="token operator">/</span> <span class="token number">60</span><span class="token punctuation">,</span>
+</span><span class="code-line">            minutes<span class="token punctuation">:</span> normalized_minutes <span class="token operator">%</span> <span class="token number">60</span><span class="token punctuation">,</span>
+</span><span class="code-line">        <span class="token punctuation">}</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function-definition function">add_minutes</span><span class="token punctuation">(</span><span class="token operator">&#x26;</span><span class="token keyword">self</span><span class="token punctuation">,</span> minutes<span class="token punctuation">:</span> <span class="token keyword">i32</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token keyword">Self</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token keyword">let</span> total_minutes <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>hours <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">+</span> <span class="token keyword">self</span><span class="token punctuation">.</span>minutes <span class="token operator">+</span> minutes<span class="token punctuation">;</span>
+</span><span class="code-line">        <span class="token class-name">Clock</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span>total_minutes <span class="token operator">/</span> <span class="token number">60</span><span class="token punctuation">,</span> total_minutes <span class="token operator">%</span> <span class="token number">60</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function-definition function">to_string</span><span class="token punctuation">(</span><span class="token operator">&#x26;</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">String</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token macro property">format!</span><span class="token punctuation">(</span><span class="token string">"{:02}:{:02}"</span><span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">.</span>hours<span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">.</span>minutes<span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">impl</span> <span class="token namespace">fmt<span class="token punctuation">::</span></span><span class="token class-name">Display</span> <span class="token keyword">for</span> <span class="token class-name">Clock</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">fn</span> <span class="token function-definition function">fmt</span><span class="token punctuation">(</span><span class="token operator">&#x26;</span><span class="token keyword">self</span><span class="token punctuation">,</span> f<span class="token punctuation">:</span> <span class="token operator">&#x26;</span><span class="token keyword">mut</span> <span class="token namespace">fmt<span class="token punctuation">::</span></span><span class="token class-name">Formatter</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token namespace">fmt<span class="token punctuation">::</span></span><span class="token class-name">Result</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token macro property">write!</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span> <span class="token string">"{:02}:{:02}"</span><span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">.</span>hours<span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">.</span>minutes<span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token keyword">impl</span> <span class="token class-name">Add</span><span class="token operator">&#x3C;</span><span class="token keyword">i32</span><span class="token operator">></span> <span class="token keyword">for</span> <span class="token class-name">Clock</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">type</span> <span class="token type-definition class-name">Output</span> <span class="token operator">=</span> <span class="token class-name">Clock</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token keyword">fn</span> <span class="token function-definition function">add</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">,</span> minutes<span class="token punctuation">:</span> <span class="token keyword">i32</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">Clock</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token keyword">let</span> total_minutes <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>hours <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">+</span> <span class="token keyword">self</span><span class="token punctuation">.</span>minutes <span class="token operator">+</span> minutes<span class="token punctuation">;</span>
+</span><span class="code-line">        <span class="token class-name">Clock</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span>total_minutes <span class="token operator">/</span> <span class="token number">60</span><span class="token punctuation">,</span> total_minutes <span class="token operator">%</span> <span class="token number">60</span><span class="token punctuation">)</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<h2 id="armstrong-number" class="heading">Armstrong Number</h2>
+<p>检测一个数字是否阿姆斯特朗数字，就是满足这些条件的：</p>
+<p>9 is an Armstrong number, because 9 = 9^1 = 9
+10 is not an Armstrong number, because 10 != 1^2 + 0^2 = 1
+153 is an Armstrong number, because: 153 = 1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153
+154 is not an Armstrong number, because: 154 != 1^3 + 5^3 + 4^3 = 1 + 125 + 64 = 190</p>
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function-definition function">is_armstrong_number</span><span class="token punctuation">(</span>num<span class="token punctuation">:</span> <span class="token keyword">u32</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token keyword">bool</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">let</span> num_str <span class="token operator">=</span> num<span class="token punctuation">.</span><span class="token function">to_string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">let</span> num_digits <span class="token operator">=</span> num_str<span class="token punctuation">.</span><span class="token function">len</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">let</span> armstrong_sum <span class="token operator">=</span> num_str
+</span><span class="code-line">        <span class="token punctuation">.</span><span class="token function">chars</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line">        <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>c<span class="token closure-punctuation punctuation">|</span></span> c<span class="token punctuation">.</span><span class="token function">to_digit</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>num_digits <span class="token keyword">as</span> <span class="token keyword">u32</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line">        <span class="token punctuation">.</span><span class="token function">try_fold</span><span class="token punctuation">(</span><span class="token number">0u32</span><span class="token punctuation">,</span> <span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>acc<span class="token punctuation">,</span> x<span class="token closure-punctuation punctuation">|</span></span> acc<span class="token punctuation">.</span><span class="token function">checked_add</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token keyword">if</span> <span class="token keyword">let</span> <span class="token class-name">Some</span><span class="token punctuation">(</span>sum<span class="token punctuation">)</span> <span class="token operator">=</span> armstrong_sum <span class="token punctuation">{</span>
+</span><span class="code-line">        sum <span class="token operator">==</span> num
+</span><span class="code-line">    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+</span><span class="code-line">        <span class="token boolean">false</span>
+</span><span class="code-line">    <span class="token punctuation">}</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>]]>
+    </content:encoded>
+  </item><item>
+    <title><![CDATA[Sei修炼中]]></title>
+    <link>https://circus-blog.vercel.app/Sei copy</link>
+    <pubDate>2023-09-07</pubDate>
+    <guid isPermaLink="false">https://circus-blog.vercel.app/Sei copy</guid>
+    <description>
+    <![CDATA[逐个填坑]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<p>昨天弄到rust-optimizer的时候就报错了，</p>
+<p>换成<a href="https://github.com/mandrean/cw-optimizoor%E4%B9%9F%E4%B8%8D%E8%A1%8C%EF%BC%8C" target="_blank" rel="noopener noreferer">https://github.com/mandrean/cw-optimizoor也不行，</a></p>
+<p>原因是这个库会读/contracts的文件但是又要要求有toml文件在里面，</p>
+<p>非常的绕。</p>
+<p>今天回来用PowerShell运行这个</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token variable">$baseName</span> <span class="token operator">=</span> <span class="token punctuation">(</span>Get-Location<span class="token punctuation">)</span>.Path <span class="token operator">|</span> Split-Path -Leaf
+</span><span class="code-line"><span class="token function">docker</span> run --rm -v <span class="token string">"<span class="token variable">${<span class="token environment constant">PWD</span>}</span>:/code"</span> -v <span class="token string">"<span class="token variable">${baseName}</span>_cache:/code/target"</span> -v registry_cache:/usr/local/cargo/registry cosmwasm/rust-optimizer:0.12.11
+</span></code></pre>
+<p>终于跑起来了</p>
+<h2 id="优化wasm后的deploysh" class="heading">优化Wasm后的./deploy.sh</h2>
+<p>立马就是另一个坑，不得不说Sei的文档写得真差。</p>
+<p>参数写成又有$END_POINT又有$RPC_ENDPOINT，</p>
+<p>执行./deploy.sh的时候，</p>
+<p>里面仅有三条sh语句，</p>
+<p>然后三条都报错。</p>
+<p>想骂人。</p>
+<h2 id="测试合约收尾" class="heading">测试合约收尾</h2>
+<p>部署完测试合约之后，</p>
+<p>拉了测试用前端也调试OK了。</p>
+<p>后面补充一下CosmWasm和Rust的知识。</p>]]>
+    </content:encoded>
+  </item><item>
+    <title><![CDATA[关于公司突然说要在Sei开发...]]></title>
+    <link>https://circus-blog.vercel.app/Sei</link>
+    <pubDate>2023-09-06</pubDate>
+    <guid isPermaLink="false">https://circus-blog.vercel.app/Sei</guid>
+    <description>
+    <![CDATA[希望这次不是拍脑袋的决定]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<p>前天晚上Adam突然给我发微信说在Sei上面开发，项目方会给到比较大的支持，让我部署几个合约玩玩。于是我立马查了下Sei的开发资料，是用Cosmos的生态，CosmWasm 是用于编写Rust智能合约的库。之前学的半桶水Rust正好用上了。</p>
+<h2 id="安装环境" class="heading">安装环境</h2>
+<p>昨天差不多花了我一天去弄环境，先把依赖项安装好，</p>
+<p>go docker jq git cmake gcc rustup make。</p>
+<p>公司电脑用的是Windows，</p>
+<p>一开始我尝试用Power Shell去安装。</p>
+<p>结果各种安装不成功，又是choco安装的go版本不正确，又是go mod tidy，</p>
+<p>最后我在WSL Ubuntu上安装了3.0.8版本的Seid。（头大）</p>
+<h2 id="开始尝试学习rust智能合约" class="heading">开始尝试学习Rust智能合约</h2>
+<p>据文档所说，利用Cosmos的Counter合约来练练手先。</p>
+<p>结果cargo wasm又报错</p>
+<blockquote>
+<blockquote>
+<p>error: package <code>sec1 v0.7.3</code> cannot be built because it requires rustc 1.65
+or newer, while the currently active rustc version is 1.61.0.</p>
+</blockquote>
+</blockquote>
+<p>升级Ubuntu的rust。</p>
+<p>升级完成后按照文档所说的进行cargo unit-test。通过</p>
+<p>但是cargo wasm又不通过了，要去CosmWasm的github找解决办法</p>
+<p>头疼。执行</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">rustup target <span class="token function">add</span> wasm32-unknown-unknown
+</span></code></pre>
+<p>又OK了</p>
+<p>然后启动docker</p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">docker</span> run --rm -v <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>"</span>:/code --mount <span class="token assign-left variable">type</span><span class="token operator">=</span>volume,source<span class="token operator">=</span><span class="token string">"$(basename "<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>"</span><span class="token punctuation">)</span>_cache",target<span class="token operator">=</span>/code/target --mount <span class="token assign-left variable">type</span><span class="token operator">=</span>volume,source<span class="token operator">=</span>registry_cache,target<span class="token operator">=</span>/usr/local/cargo/registrycosmwasm/rust-optimizer:0.12.11
+</span></code></pre>
+<p>然后老报错，</p>
+<p>在Ubuntu上面就报</p>
+<pre><code class="code-highlight"><span class="code-line">docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.
+</span></code></pre>
+<p>在PowerShell上面就报</p>
+<pre><code class="code-highlight"><span class="code-line">basename: The term 'basename' is not recognized as a name of a cmdlet, function, script file, or executable program.
+</span><span class="code-line">Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+</span><span class="code-line">docker: invalid reference format.
+</span></code></pre>
+<p>@#!$@$@%!%#</p>
+<p>然后我看到这款优化器<a href="https://github.com/mandrean/cw-optimizoor%EF%BC%8C%E5%AE%89%E8%A3%85%E8%AF%95%E8%AF%95%E5%85%88%E3%80%82" target="_blank" rel="noopener noreferer">https://github.com/mandrean/cw-optimizoor，安装试试先。</a></p>]]>
+    </content:encoded>
+  </item><item>
+    <title><![CDATA[Rust学习手记]]></title>
+    <link>https://circus-blog.vercel.app/Start</link>
+    <pubDate>2023-09-01</pubDate>
+    <guid isPermaLink="false">https://circus-blog.vercel.app/Start</guid>
+    <description>
+    <![CDATA[记录一下今天学习Rust的重点]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<p>现在开始在工作的闲暇时间中（摸鱼中）学习一下Rust，Rust在服务端的性能仅次于C++，而在Golang, C#, Java, Python, Node之上（ChatGPT说的，要杠找它），而在区块链领域里面也会用到，譬如Solana，还有StarkNet（其编写智能合约的Cairo也是跟Rust相似，后面也会学习）</p>
+<h2 id="move" class="heading">Move</h2>
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">let</span> s1 <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">let</span> s2 <span class="token operator">=</span> s1<span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>如果你在其他语言中听说过术语 浅拷贝（shallow copy）和 深拷贝（deep copy），那么拷贝指针、长度和容量而不拷贝数据可能听起来像浅拷贝。不过因为 Rust 同时使第一个变量无效了，这个操作被称为 移动（move），而不是叫做浅拷贝。上面的例子可以解读为 s1 被 移动 到了 s2 中。</p>
+<h2 id="clone" class="heading">Clone</h2>
+<pre class="language-rust"><code class="language-rust code-highlight"><span class="code-line"><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line">    <span class="token keyword">let</span> s1 <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">    <span class="token keyword">let</span> s2 <span class="token operator">=</span> s1<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line">
+</span><span class="code-line">    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"s1 = {}, s2 = {}"</span><span class="token punctuation">,</span> s1<span class="token punctuation">,</span> s2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="code-line"><span class="token punctuation">}</span>
+</span></code></pre>
+<p>如果我们 确实 需要深度复制 String 中堆上的数据，而不仅仅是栈上的数据，可以使用一个叫做 clone 的通用函数。</p>]]>
+    </content:encoded>
+  </item><item>
+    <title><![CDATA[24小时焦虑]]></title>
+    <link>https://circus-blog.vercel.app/Anxiety</link>
+    <pubDate>2023-08-31</pubDate>
+    <guid isPermaLink="false">https://circus-blog.vercel.app/Anxiety</guid>
+    <description>
+    <![CDATA[]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<p>马上就九月了，2023年过得真的很快。</p>
+<h2 id="焦虑中" class="heading">焦虑中</h2>
+<p>最近很焦虑，各种各样的。</p>
+<p>对金钱的焦虑，</p>
+<p>对个人价值的焦虑，</p>
+<p>对未来的焦虑，</p>
+<p>24小时充斥着我的大脑。</p>
+<h2 id="焦虑的原因" class="heading">焦虑的原因</h2>
+<p>为什么会感到焦虑呢？</p>
+<p>我自己思考了一下，</p>
+<p>或许是因自身能力不足而焦虑，</p>
+<p>或许是看朋友圈的同学朋友，人人成家立业，自己一无所获而焦虑，</p>
+<p>总之就各种焦虑。</p>
+<h2 id="解决方式" class="heading">解决方式</h2>
+<p>目前在工作闲暇的时候不断学习充实自己，Rust之类的。</p>
+<p>下班在家的时候也打打游戏（目前在打女神异闻录5皇家版），画一下画。</p>
+<p>少看或不看朋友圈，明白每个人的人生都有着自己的节奏。</p>
+<p>学会冥想整理一下自己的思路。</p>
+<p>希望能逐渐改善这种情况。</p>
+<p>共勉。</p>]]>
+    </content:encoded>
+  </item><item>
+    <title><![CDATA[落下了差不多半年没更新啦]]></title>
+    <link>https://circus-blog.vercel.app/Zone</link>
+    <pubDate>2023-08-28</pubDate>
+    <guid isPermaLink="false">https://circus-blog.vercel.app/Zone</guid>
+    <description>
+    <![CDATA[]]>
+    </description>
+    <content:encoded>
+      <![CDATA[<h2 id="落下的原因" class="heading">落下的原因</h2>
+<p>最近在忙公司项目的事情。回到家后又只想打游戏放松一下，所以没想起更新，后面我会督促一下自己更新博客。</p>
+<p>然后腹部开始有些剑突痛，以为是肝出了问题，去医院检查。</p>
+<p>医生告诉我肝的位置不在那里哈哈，我自己估计可能是没吃早餐胆的问题吧，顺带照了个B超说我有脂肪肝。。。</p>
+<p>开始要运动起来了，重新健身激活肌肉。</p>
+<h2 id="为什么要督促一下自己更新" class="heading">为什么要督促一下自己更新？</h2>
+<p>主要有几个原因。</p>
+<p>写作可以理顺一下自己的思路。</p>
+<p>每天我都冒出来很多的想法，但是付诸行动的少之又少。</p>
+<p>这半年来有学习有关零知识证明的circuit，Aleo。</p>
+<p>Node服务端的Express、Nestjs。</p>
+<p>DB端的MongoDB、PostgesDB、GraphQL。</p>
+<p>还有画画技巧都没有好好地记录。</p>
+<p>而且感觉个人地阅读专注度和短期记忆力有所下降。</p>
+<p>最主要是为了让自己跳出舒适圈吧。</p>]]>
+    </content:encoded>
+  </item><item>
     <title><![CDATA[了解Aleo]]></title>
-    <link>https://comet-land-blog.vercel.app/Aleo</link>
+    <link>https://circus-blog.vercel.app/Aleo</link>
     <pubDate>2023-03-30</pubDate>
-    <guid isPermaLink="false">https://comet-land-blog.vercel.app/Aleo</guid>
+    <guid isPermaLink="false">https://circus-blog.vercel.app/Aleo</guid>
     <description>
     <![CDATA[]]>
     </description>
@@ -31,9 +361,9 @@
     </content:encoded>
   </item><item>
     <title><![CDATA[开始阅读关于零知识证明方面的资料]]></title>
-    <link>https://comet-land-blog.vercel.app/Start</link>
+    <link>https://circus-blog.vercel.app/Start</link>
     <pubDate>2023-02-28</pubDate>
-    <guid isPermaLink="false">https://comet-land-blog.vercel.app/Start</guid>
+    <guid isPermaLink="false">https://circus-blog.vercel.app/Start</guid>
     <description>
     <![CDATA[]]>
     </description>

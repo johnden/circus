@@ -6,7 +6,9 @@ category: 'Rust'
 ---
 
 ## PrimitiveDateTime, Duration
+
 输入一个日期，然后返回十亿秒后的那个时间。
+
 ```rust
 use time::{PrimitiveDateTime as DateTime, Duration};
 
@@ -18,7 +20,9 @@ pub fn after(start: DateTime) -> DateTime {
 ```
 
 ## Reverse
+
 输入一个字符串，输出反向的字符串。
+
 ```rust
 pub fn reverse(input: &str) -> String {
     // 将输入字符串转换为字符切片，反转它，然后将其连接成字符串
@@ -28,7 +32,9 @@ pub fn reverse(input: &str) -> String {
 ```
 
 ## Clock String
-输入hour和minute，输出一个显示时间的字符串
+
+输入 hour 和 minute，输出一个显示时间的字符串
+
 ```rust
 use std::fmt;
 use std::ops::Add;
@@ -77,12 +83,14 @@ impl Add<i32> for Clock {
 ```
 
 ## Armstrong Number
+
 检测一个数字是否阿姆斯特朗数字，就是满足这些条件的：
 
 9 is an Armstrong number, because 9 = 9^1 = 9
 10 is not an Armstrong number, because 10 != 1^2 + 0^2 = 1
 153 is an Armstrong number, because: 153 = 1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153
 154 is not an Armstrong number, because: 154 != 1^3 + 5^3 + 4^3 = 1 + 125 + 64 = 190
+
 ```rust
 pub fn is_armstrong_number(num: u32) -> bool {
     let num_str = num.to_string();
@@ -99,4 +107,3 @@ pub fn is_armstrong_number(num: u32) -> bool {
     }
 }
 ```
-
