@@ -48,3 +48,29 @@ StdResult 结构体，它是 Result 的包装器。
 用于查询的返回类型 Binary，以及将任意类型转换为 Binary 的 to_binary 函数。
 
 Deps，它是 DepsMut 的只读版本。
+
+## 第三课
+
+添加一个对 WasmMsg::Execute 的调用作为 CosmosMsg::Wasm()的参数。
+
+WasmMsg::Execute 接受三个参数：contract_addr、msg 和 funds。
+
+将 contract_address 的值分配为 Section_31（以字符串格式）。
+
+将 msg 分配为对 Section31Execute::Snitch 的引用，用 to_binary()包装。将其参数分别写在单独的行上，并使用?运算符捕获结果中的错误。
+
+将 funds 分配一个值 vec![]（一个空向量）。
+
+## 第四课
+
+CosmosMsg，用于在子消息和直接消息中使用
+
+SubMsg，用于子消息中使用
+
+在 reply 入口点中使用的 Reply 类型
+
+用于发送查询消息的 WasmQuery::Smart
+
+用于 deps.querier.query 的 QueryRequest
+
+用于创建 add_message 消息的 WasmMsg::Execute
